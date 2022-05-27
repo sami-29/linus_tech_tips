@@ -4,7 +4,8 @@ $sql = "SELECT * FROM products";
 $result = mysqli_query($conn, $sql);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-if (isset($_POST["search"]))
+if (isset($_POST["search"])) {
+}
 
 ?>
 
