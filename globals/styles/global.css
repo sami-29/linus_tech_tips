@@ -162,12 +162,16 @@ table {
 .nav-bar__container {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   cursor: pointer;
   text-decoration: none;
 }
 
 .nav-bar__logo {
   height: var(--logo-size);
+}
+.nav-bar__cart {
+  margin-right: 20px;
 }
 
 .nav-bar__title {
@@ -186,7 +190,15 @@ table {
   border: 3px solid green;
 }
 
-@media only screen and (min-width: 700px) {
+.search {
+  border: 1px solid orange;
+  color: black;
+  outline-color: orange;
+  padding: 10px 30px;
+  border-radius: 6px;
+}
+
+@media only screen and (min-width: 850px) {
   .nav-bar {
     padding: 25px;
   }
@@ -198,6 +210,10 @@ table {
   .nav-bar__avatar {
     margin-left: 30px;
     margin-right: 20px;
+  }
+
+  .nav-bar__cart {
+    margin-right: 50px;
   }
   main {
     margin-top: 200px;

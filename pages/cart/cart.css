@@ -109,3 +109,5 @@ main {
 .quantity_modifier > input[value="+"] {
   background-color: rgb(64, 187, 64);
 }
+
+/* media query to make car vertical */

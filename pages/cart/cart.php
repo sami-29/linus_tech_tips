@@ -86,7 +86,7 @@ if (isset($_POST['decrement'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../globals/styles/global.css">
+    <link rel="stylesheet" href="../../globals/styles/global.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="../../assets/2018_Linus_Tech_Tips_logo.svg.png" type="image/x-icon">
     <link rel="stylesheet" href="./cart.css?v=<?php echo time(); ?>">
     <!--<script src="main.js" defer></script>-->
@@ -131,6 +131,7 @@ if (isset($_POST['decrement'])) {
         }
 
         ?>
+        </div>
         <div class="cart__total">
             <p>Total: <?php echo $total; ?>$</p>
         </div>

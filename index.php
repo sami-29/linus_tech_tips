@@ -4,7 +4,11 @@ $sql = "SELECT * FROM products";
 $result = mysqli_query($conn, $sql);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
-if (isset($_POST["search"])) {
+if (isset($_GET['search'])) {
+    $search = $_GET['search'];
+    $sql = "SELECT * FROM products WHERE name_small LIKE '%$search%' OR name LIKE '%$search%'";
+    $result = mysqli_query($conn, $sql);
+    $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
 
 ?>
@@ -28,9 +32,6 @@ if (isset($_POST["search"])) {
     <?php include './globals/header.php' ?>
 
     <main>
-        <form action="" method="POST">
-            <input name="search" type="search" placeholder="Search product...">
-        </form>
         <div class="products">
             <?php foreach ($products as $product) : ?>
                 <div class="product">
