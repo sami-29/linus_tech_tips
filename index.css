@@ -64,7 +64,21 @@ main {
   border-radius: 10px;
   height: 2.5em;
   cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 0px 5px #aaaaaa;
 }
+
+.buy-cart > a {
+  text-decoration: none;
+  color: white;
+  font-weight: 700;
+}
+
+.buy-cart > .button:hover {
+  transform: scale(1.05);
+  filter: brightness(110%);
+}
+
 .special_quantity_modifier {
   position: absolute;
   z-index: 1;

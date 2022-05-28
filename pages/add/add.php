@@ -1,7 +1,7 @@
 <?php include '../../config/database.php'; ?>
 <?php
-$small_name = $big_name = $price = $description = $image = $rating = $votes = "";
-$small_name_err = $big_name_err = $price_err = $description_err = $image_err = $rating_err = $votes_err = "";
+$small_name = $big_name = $price = $description = $image = $rating = $votes = $category = "";
+$small_name_err = $big_name_err = $price_err = $description_err = $image_err = $rating_err = $votes_err = $category = "";
 
 // Form submit
 if (isset($_POST['submit'])) {
@@ -48,10 +48,16 @@ if (isset($_POST['submit'])) {
     } else {
         $votes = filter_input(INPUT_POST, 'votes', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     }
+    //validate category
+    if (empty(trim($_POST['category']))) {
+        $category_err = "Please enter a category.";
+    } else {
+        $category = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+    }
     // Check input errors before inserting in database
-    if (empty($small_name_err) && empty($big_name_err) && empty($price_err) && empty($description_err) && empty($image_err) && empty($rating_err) && empty($votes_err)) {
+    if (empty($small_name_err) && empty($big_name_err) && empty($price_err) && empty($description_err) && empty($image_err) && empty($rating_err) && empty($votes_err) && empty($category_err)) {
         //add product to database
-        $sql = "INSERT INTO products (name_small, name, price, description, image, rating, votes) VALUES ('$small_name', '$big_name', '$price', '$description', '$image', '$rating', '$votes')";
+        $sql = "INSERT INTO products (name_small, name, price, description, image, rating, votes, category) VALUES ('$small_name', '$big_name', '$price', '$description', '$image', '$rating', '$votes', '$category')";
         if (mysqli_query($conn, $sql)) {
             //success
             header("location: ../../pages/add/add.php");
@@ -92,6 +98,18 @@ if (isset($_POST['submit'])) {
                 <div class="field">
                     <label class="form-label" for="big_name">Expanded Name: </label>
                     <input class="form-control" id="big_name" name="big_name" placeholder="Enter product's expanded name" type="text">
+                </div>
+                <div class="field">
+                    <label class="form-label" for="category">Category: </label>
+                    <select class="form-control" id="category" name="category">
+                        <option value="">Select category</option>
+                        <option value="cpu">cpu</option>
+                        <option value="gpu">gpu</option>
+                        <option value="ram">ram</option>
+                        <option value="motherboard">motherboard</option>
+                        <option value="storage">storage</option>
+                        <option value="psu">psu</option>
+                    </select>
                 </div>
                 <div class="field">
                     <label class="form-label" for="image">Image Url: </label>

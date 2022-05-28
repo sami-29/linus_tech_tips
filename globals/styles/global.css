@@ -242,6 +242,20 @@ main {
   color: red;
 }
 
+.brand > a {
+  text-decoration: none;
+  color: rgb(201, 204, 50);
+}
+
+.category > a {
+  text-decoration: none;
+  color: rgb(151, 132, 190);
+}
+
+.footer .asc {
+  color: rgb(84, 206, 84);
+}
+
 .footer li {
   cursor: pointer;
   line-height: 1.25rem;

@@ -104,11 +104,11 @@ if (isset($_POST['decrement'])) {
         } else {
             echo '<div class="cart"> 
                 <div class="cart__header">
-                    <p>image</p>
-                    <p>name</p>
-                    <p>price</p>
-                    <p>quantity</p>
-                    <p>total</p>
+                    <p>Product</p>
+                    <p>Name</p>
+                    <p>Price</p>
+                    <p>Quantity</p>
+                    <p>Total</p>
                 </div>';
 
             foreach ($cart as $item) {
@@ -132,7 +132,7 @@ if (isset($_POST['decrement'])) {
 
         ?>
         </div>
-        <div class="cart__total">
+        <div style="margin-bottom: 50px;" class="cart__total">
             <p>Total: <?php echo $total; ?>$</p>
         </div>
     </main>

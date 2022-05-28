@@ -47,6 +47,13 @@ main {
   width: 48%;
   height: 3.5vw;
   cursor: pointer;
+  transition: 0.3s;
+  box-shadow: 0px 0px 5px #aaaaaa;
+}
+
+.item_card__button:hover {
+  transform: scale(1.05);
+  filter: brightness(110%);
 }
 
 .item_card__rating {

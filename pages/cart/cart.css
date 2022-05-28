@@ -89,12 +89,19 @@ main {
 }
 
 .quantity_modifier > input[type="submit"] {
+  color: white;
   border-radius: 50%;
   border: none;
   cursor: pointer;
   font-size: 1em;
   height: 30px;
   width: 30px;
+  transition: 0.3s;
+}
+
+.quantity_modifier > input[type="submit"]:hover {
+  transform: scale(1.05);
+  filter: brightness(110%);
 }
 
 .quantity_modifier > input[type="text"] {

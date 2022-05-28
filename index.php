@@ -4,9 +4,80 @@ $sql = "SELECT * FROM products";
 $result = mysqli_query($conn, $sql);
 $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+
+//function to sort by price
+function sortByPrice($products, $sortby)
+{
+    if ($sortby == "asc") {
+        usort($products, function ($a, $b) {
+            return $a['price'] - $b['price'];
+        });
+    } else {
+        usort($products, function ($a, $b) {
+            return $b['price'] - $a['price'];
+        });
+    }
+    return $products;
+}
+
+//function to sort by category
+function sortByCategory($products, $category)
+{
+    if ($category == "cpu") {
+        usort($products, function ($a, $b) {
+            return $a['category'] - $b['category'];
+        });
+    } else if ($category == "gpu") {
+        usort($products, function ($a, $b) {
+            return $a['category'] - $b['category'];
+        });
+    } else if ($category == "ram") {
+        usort($products, function ($a, $b) {
+            return $a['category'] - $b['category'];
+        });
+    } else if ($category == "psu") {
+        usort($products, function ($a, $b) {
+            return $a['category'] - $b['category'];
+        });
+    } else if ($category == "motherboard") {
+        usort($products, function ($a, $b) {
+            return $a['category'] - $b['category'];
+        });
+    } else if ($category == "storage") {
+        usort($products, function ($a, $b) {
+            return $a['category'] - $b['category'];
+        });
+    }
+    return $products;
+}
+// function to search by name or description or name_small
+function searchByName($products, $search)
+{
+    $search = strtolower($search);
+    $products = array_filter($products, function ($product) use ($search) {
+        return strpos(strtolower($product['name']), $search) !== false || strpos(strtolower($product['name_small']), $search) !== false;
+    });
+    return $products;
+}
+
+
 if (isset($_GET['search'])) {
-    $search = $_GET['search'];
-    $sql = "SELECT * FROM products WHERE name_small LIKE '%$search%' OR name LIKE '%$search%'";
+    $products = searchByName($products, $_GET['search']);
+}
+
+if (isset($_GET['sortby'])) {
+    $sortby = $_GET['sortby'];
+    $products = sortByPrice($products, $sortby);
+}
+if (isset($_GET['category'])) {
+    $category = $_GET['category'];
+    $products = sortByCategory($products, $category);
+}
+
+if (isset($_GET['brand'])) {
+    $brand = $_GET['brand'];
+    // if brand in name or name_small or description
+    $sql = "SELECT * FROM products WHERE name LIKE '%$brand%' OR name_small LIKE '%$brand%' OR description LIKE '%$brand%'";
     $result = mysqli_query($conn, $sql);
     $products = mysqli_fetch_all($result, MYSQLI_ASSOC);
 }
